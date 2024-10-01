@@ -44,14 +44,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Invalid password
             echo "<h1>Login failed!</h1>";
             echo "<p>Invalid username or password.</p>";
-            header("Location: login.html");
+            session_destroy();
+
+// Redirect to login page
+header("Location: login.html");
             exit(); // Stop script execution after redirect
         }
     } else {
         // Username does not exist
         echo "<h1>Login failed!</h1>";
         echo "<p>User not found.</p>";
-        header("Location: login.html");
+        session_destroy();
+
+// Redirect to login page
+header("Location: login.html");
         exit(); // Stop script execution after redirect
     }
 
